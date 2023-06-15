@@ -31,7 +31,7 @@ namespace Tuga.Windows
         private void PayByCardBtn_Click(object sender, RoutedEventArgs e)
         {
             GlobaVariables.UsedClient = null;
-            GlobaVariables.selectedTable = null;
+            GlobaVariables.selectedTable = null;    
             GlobaVariables.ContainerOrder.preOrderList = new List<GlobaVariables.preOrder>();
             this.Close();
             
