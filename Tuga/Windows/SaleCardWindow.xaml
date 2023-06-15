@@ -1,0 +1,99 @@
+﻿<Window x:Class="Tuga.Windows.SaleCardWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Tuga.Windows"
+        mc:Ignorable="d"
+        Title="SaleCardWindow" Height="800" Width="1200" Background="#FFC4FDC4">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <WrapPanel VerticalAlignment="Bottom">
+            <Image x:Name="PirateImg" Source="/Photo/Пирааттт.png" Height="300" Margin="50 0 0 50"/>
+            <Image Visibility="Visible" x:Name="SaleCardRequestImg" Source="/Photo/SaleCardRequest.png" Height="100" Width="700" Margin="20 0 0 0"/>
+            <Grid Visibility="Collapsed" x:Name="RegisterGrd" Margin="100 0 0 0">
+                <Image Source="/Photo/LightningBorderBrd.png" Height="550"/>
+                <WrapPanel HorizontalAlignment="Center" Orientation="Vertical">
+                    <Grid Margin="0 40 0 0 ">
+                        <Image Source="/Photo/LightningTb.png" Width="400"/>
+                        <TextBlock Margin="175 51 0 0" Text="Имя" Foreground="#FF759A75" x:Name="HintNameTb" FontFamily="Council(RUS BY LYAJKA)" FontSize="36" />
+
+                        <TextBox FontFamily="Council(RUS BY LYAJKA)" FontSize="36" MaxLength="20" x:Name="NameTb" Width="300" Height="40" SelectionBrush="{x:Null}" Background="{x:Null}" BorderBrush="{x:Null}" GotFocus="NameTb_GotFocus" LostFocus="NameTb_LostFocus" PreviewKeyDown="Tbs_PreviewKeyDown" PreviewTextInput="NameTb_PreviewTextInput">
+
+                        </TextBox>
+                    </Grid>
+                    <Grid Margin="0 0 0 0 ">
+                        <Image Source="/Photo/LightningTb.png" Width="400"/>
+                        <TextBlock Margin="180 51 0 0" Text="ДР" Foreground="#FF759A75" x:Name="HintBirthTb" FontFamily="Council(RUS BY LYAJKA)" FontSize="36" />
+                        <TextBox FontFamily="Council(RUS BY LYAJKA)" FontSize="36" MaxLength="10" x:Name="BirthTb" Width="300" Height="40" SelectionBrush="{x:Null}" Background="{x:Null}" BorderBrush="{x:Null}"  LostFocus="BirthTb_LostFocus" GotFocus="BirthTb_GotFocus" PreviewTextInput="BirthTb_PreviewTextInput" PreviewKeyDown="Tbs_PreviewKeyDown">
+
+                        </TextBox>
+                    </Grid>
+                    <Grid Margin="0 0 0 0 ">
+                        <Image Source="/Photo/LightningTb.png" Width="400"/>
+                        <TextBlock Margin="125 51 0 0" Text="Номер телефона" Foreground="#FF759A75" x:Name="HintPhoneTb" FontFamily="Council(RUS BY LYAJKA)" FontSize="36" />
+                        <TextBox FontFamily="Council(RUS BY LYAJKA)" FontSize="36" MaxLength="11" x:Name="PhoneTb" Width="300" Height="40" SelectionBrush="{x:Null}" Background="{x:Null}" BorderBrush="{x:Null}"  LostFocus="PhoneTb_LostFocus" GotFocus="PhoneTb_GotFocus" PreviewTextInput="PhoneTb_PreviewTextInput" PreviewKeyDown="Tbs_PreviewKeyDown">
+
+                        </TextBox>
+                    </Grid>
+                </WrapPanel>
+            </Grid>
+
+        </WrapPanel>
+        <WrapPanel Visibility="Collapsed" x:Name="EnterPhoneWp" Margin="350 150 0 0">
+            <Image Source="/Photo/EnterPhoneImg.png" Width="700" Margin="50 0 0 80"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="9*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="/Photo/PhoneBoxImg.png" Width="700" Margin="50,0,0,0" Grid.ColumnSpan="2"/>
+                <TextBox x:Name="AuthPhoneTb" MaxLength="11" VerticalAlignment="Center" Grid.Column="2" Margin="0 0 0 9" FontSize="68" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Foreground="LimeGreen" FontFamily="Council(RUS BY LYAJKA)" PreviewTextInput="PhoneTb_PreviewTextInput" PreviewKeyDown="Tbs_PreviewKeyDown"></TextBox>
+            </Grid>
+        </WrapPanel>
+        <WrapPanel Visibility="Visible" x:Name="ActionWithCardWp" Grid.Row="1" VerticalAlignment="Center">
+            <Button x:Name="SkipBtn" Height="130" Width="300" Background="Black" Margin="75 0 0 0" Foreground="LimeGreen" FontFamily="Council(RUS BY LYAJKA)" FontSize="48" Click="SkipBtn_Click">
+                <Image Source="/Photo/SkipBtn.png" />
+            </Button>
+            <Button x:Name="RegisterBtn" Height="130" Width="300" Background="Black" Margin="75 0 0 0" Foreground="LimeGreen" FontFamily="Council(RUS BY LYAJKA)" FontSize="48" Click="RegisterBtn_Click">
+                <Image Source="/Photo/RegisterBtn.png" />
+            </Button>
+            <Button x:Name="AuthBtn" Height="130" Width="300" Background="Black" Margin="75 0 0 0" Foreground="LimeGreen" FontFamily="Council(RUS BY LYAJKA)" FontSize="48" Click="AuthBtn_Click">
+                <Image Source="/Photo/AuthBtn.png" />
+            </Button>
+        </WrapPanel>
+        <WrapPanel Visibility="Collapsed" Grid.Row="1" x:Name="RegistrationBtnsWP" VerticalAlignment="Center">
+            <Button x:Name="CancelBtn" Height="130" Width="300" Background="Black" Margin="220 0 0 0" Foreground="LimeGreen" FontFamily="Council(RUS BY LYAJKA)" FontSize="48" Click="CancelBtn_Click">
+                <Image Source="/Photo/CancelBtn.png" />
+            </Button>
+            <Button x:Name="OkBtn" Height="130" Width="300" Background="Black" Margin="220 0 0 0" Foreground="LimeGreen" FontFamily="Council(RUS BY LYAJKA)" FontSize="48" Click="OkBtn_Click">
+                <Image Source="/Photo/GoBtn.png" />
+            </Button>
+        </WrapPanel>
+        <Border  Panel.ZIndex="1" Grid.RowSpan="2" x:Name="PlugBrd" Visibility="Collapsed" Background="#02000000"/>
+        <Border Panel.ZIndex="2" Grid.RowSpan="2" x:Name="NotificationBrd" Visibility="Collapsed" Height="400" Width="900" Margin="0 0 0 0" Background="#FF80F36D" BorderThickness="3" BorderBrush="Black">
+            <WrapPanel Orientation="Vertical" HorizontalAlignment="Center" >
+                <TextBlock Name="NotificationTb" Text="Столик уже занят, хотите присоединиться?" Margin="0 120 0 0" FontSize="36" FontFamily="Muller Regular"/>
+                <Button Style="{DynamicResource ButtonRound}" Background="Black"
+                        Width="350"
+                        Height="80" 
+                        
+                        Margin="0 100 0 0" BorderBrush="{x:Null}"
+                    x:Name="btnOk" Foreground="#FF2AEB2A" Click="btnNoJoin_Click">
+                    <TextBlock                     
+                        Text="Ок"
+                        FontSize="48" 
+                        FontFamily="Muller Regular"
+                        Foreground="#FF2AEB2A"
+                        Margin="0 0 0 0"
+                >
+                    </TextBlock>
+                </Button>
+            </WrapPanel>
+        </Border>
+
+    </Grid>
+</Window>

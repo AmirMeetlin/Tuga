@@ -1,0 +1,95 @@
+﻿<Window x:Class="Tuga.Windows.MenuWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Tuga.Windows"
+        mc:Ignorable="d"
+        Title="MenuWindow" Height="800" Width="1200" Background="#FFC4FDC4">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.255*"/>
+            <RowDefinition Height="0.095*"/>
+            <RowDefinition Height="0.75*"/>
+        </Grid.RowDefinitions>
+        <Image
+            Grid.Column="1"
+            Grid.ColumnSpan="3" 
+            Source="/Photo/вывеска.png"
+            VerticalAlignment="Bottom"
+            Margin="90 30"
+            >
+        </Image>
+        <Border Grid.Row="1" BorderThickness="0 1 0 1" BorderBrush="Black">
+            <WrapPanel
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+            >
+                <Button Style="{DynamicResource btnsMenuStyle}" Background="{x:Null}" BorderBrush="{x:Null}" x:Name="btnMenu" Click="btnMenu_Click">
+                    <TextBlock
+                    Text="Меню"
+                    FontSize="48" 
+                    x:Name="tbMenu"
+                    FontFamily="Muller Regular" Foreground="LimeGreen"
+                    >
+                        <TextBlock.Effect>
+                            <DropShadowEffect
+                              ShadowDepth="4"
+                              Direction="240"
+                              Color="LimeGreen"
+                             BlurRadius="4"/>
+                        </TextBlock.Effect>
+                    </TextBlock>
+                </Button>
+
+                <Button Background="{x:Null}"
+                        BorderBrush="{x:Null}" 
+                        x:Name="btnOrder" Click="btnOrder_Click"
+                        Style="{DynamicResource btnsMenuStyle}">
+                    <TextBlock
+                    Text="Мой заказ"
+                    FontSize="48" 
+                    FontFamily="Muller Regular"
+                    Margin="60 0 0 0"
+                    x:Name="tbOrder" 
+                    
+
+                    >
+                        <TextBlock.Effect>
+                            <DropShadowEffect
+                              ShadowDepth="4"
+                              Direction="240"
+                              Color="LimeGreen"
+                             BlurRadius="4"/>
+                        </TextBlock.Effect>
+                    </TextBlock>
+                </Button>
+                <Button Background="{x:Null}" 
+                        BorderBrush="{x:Null}"
+                        x:Name="btnChooseTable"
+                        Style="{DynamicResource btnsMenuStyle}"
+                        Click="btnChooseTable_Click">
+                    <TextBlock
+                    Text="Выбор столика"
+                    FontSize="48" 
+                    FontFamily="Muller Regular"
+                    Margin="60 0 0 0"
+                        x:Name="tbChooseTable"
+                    >
+                        <TextBlock.Effect>
+                            <DropShadowEffect
+                              ShadowDepth="4"
+                              Direction="240"
+                              Color="LimeGreen"
+                             BlurRadius="4"/>
+                        </TextBlock.Effect>
+                    </TextBlock>
+                </Button>
+            </WrapPanel>
+        </Border>
+        <Frame 
+            x:Name="frPages" NavigationUIVisibility="Hidden"
+            Grid.Row="2"
+            />
+    </Grid>
+</Window>

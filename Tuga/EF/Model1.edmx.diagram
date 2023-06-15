@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fcf6f10195ab4272886535b990cdfd29" Name="Diagram1" ZoomLevel="72">
+        <EntityTypeShape EntityType="TortugaKRModel.AddIngridient" Width="1.5" PointX="10.5" PointY="8.875" />
+        <EntityTypeShape EntityType="TortugaKRModel.AdditionalPhotos" Width="1.5" PointX="5.25" PointY="14.625" />
+        <EntityTypeShape EntityType="TortugaKRModel.Category" Width="1.5" PointX="0.75" PointY="7.125" />
+        <EntityTypeShape EntityType="TortugaKRModel.Client" Width="1.5" PointX="0.75" PointY="13.75" />
+        <EntityTypeShape EntityType="TortugaKRModel.ComplimentaryDish" Width="1.5" PointX="5.25" PointY="5.625" />
+        <EntityTypeShape EntityType="TortugaKRModel.Dish" Width="1.5" PointX="3" PointY="5.625" />
+        <EntityTypeShape EntityType="TortugaKRModel.DishIngridient" Width="1.5" PointX="8.25" PointY="6.875" />
+        <EntityTypeShape EntityType="TortugaKRModel.Employee" Width="1.5" PointX="0.75" PointY="19.875" />
+        <EntityTypeShape EntityType="TortugaKRModel.IDTable" Width="1.5" PointX="0.75" PointY="17.25" />
+        <EntityTypeShape EntityType="TortugaKRModel.Ingridient" Width="1.5" PointX="6" PointY="1.5" />
+        <EntityTypeShape EntityType="TortugaKRModel.Order" Width="1.5" PointX="3" PointY="15.25" />
+        <EntityTypeShape EntityType="TortugaKRModel.OrderDish" Width="1.5" PointX="5.25" PointY="8.5" />
+        <EntityTypeShape EntityType="TortugaKRModel.RemoveIngridient" Width="1.5" PointX="7.5" PointY="9.875" />
+        <EntityTypeShape EntityType="TortugaKRModel.Role" Width="1.5" PointX="1.5" PointY="23.375" />
+        <EntityTypeShape EntityType="TortugaKRModel.Status" Width="1.5" PointX="0.75" PointY="11.5" />
+        <EntityTypeShape EntityType="TortugaKRModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" />
+        <AssociationConnector Association="TortugaKRModel.FK_AddIngridient_Ingridient" />
+        <AssociationConnector Association="TortugaKRModel.FK_AddIngridient_OrderDish" />
+        <AssociationConnector Association="TortugaKRModel.FK_AdditionalPhotos_Dish" />
+        <AssociationConnector Association="TortugaKRModel.FK_Dish_Category" />
+        <AssociationConnector Association="TortugaKRModel.FK_Order_Client" />
+        <AssociationConnector Association="TortugaKRModel.FK_ComplimentaryDish_Dish" />
+        <AssociationConnector Association="TortugaKRModel.FK_ComplimentaryDish_Dish1" />
+        <AssociationConnector Association="TortugaKRModel.FK_DishIngridient_Dish" />
+        <AssociationConnector Association="TortugaKRModel.FK_OrderDish_Dish" />
+        <AssociationConnector Association="TortugaKRModel.FK_DishIngridient_Ingridient" />
+        <AssociationConnector Association="TortugaKRModel.FK_Employee_Role" />
+        <AssociationConnector Association="TortugaKRModel.FK_Order_Employee" />
+        <AssociationConnector Association="TortugaKRModel.FK_Order_IDTable" />
+        <AssociationConnector Association="TortugaKRModel.FK_RemoveIngridient_Ingridient" />
+        <AssociationConnector Association="TortugaKRModel.FK_Order_Status" />
+        <AssociationConnector Association="TortugaKRModel.FK_OrderDish_Order" />
+        <AssociationConnector Association="TortugaKRModel.FK_RemoveIngridient_OrderDish" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

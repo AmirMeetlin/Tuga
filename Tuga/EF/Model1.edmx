@@ -1,0 +1,1402 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище TortugaKRModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AddIngridient">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDIngridient" Type="int" Nullable="false" />
+          <Property Name="IDOrderDish" Type="int" Nullable="false" />
+          <Property Name="QTY" Type="int" />
+        </EntityType>
+        <EntityType Name="AdditionalPhotos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDDish" Type="int" Nullable="false" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="1000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="IDCategory" />
+          </Key>
+          <Property Name="IDCategory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="SecondName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="100" />
+          <Property Name="Phone" Type="nchar" MaxLength="11" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="BuyingSum" Type="int" Nullable="false" />
+          <Property Name="BirthDay" Type="date" />
+        </EntityType>
+        <EntityType Name="ComplimentaryDish">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDDishParent" Type="int" Nullable="false" />
+          <Property Name="IDDishChild" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dish">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Cost" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="PhotoPath" Type="nvarchar" MaxLength="1000" />
+          <Property Name="IDCategory" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="VolumeInMililitres" Type="int" />
+          <Property Name="WeightinGrammes" Type="int" />
+          <Property Name="Fat" Type="int" Nullable="false" />
+          <Property Name="Protein" Type="int" Nullable="false" />
+          <Property Name="Carbohydrate" Type="int" Nullable="false" />
+          <Property Name="Kkal" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DishIngridient">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDIngridient" Type="int" Nullable="false" />
+          <Property Name="IDDish" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdRole" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IDTable">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="TableNumber" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="IsAvalible" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ingridient">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Cost" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Piсture" Type="nvarchar" MaxLength="1000" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CanBeAdded" Type="bit" Nullable="false" />
+          <Property Name="CanBeRemoved" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDEmpl" Type="int" Nullable="false" />
+          <Property Name="IDTable" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="IDClient" Type="int" />
+          <Property Name="DateTime" Type="datetime" Nullable="false" />
+          <Property Name="IDStatus" Type="int" />
+          <Property Name="FullPrice" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="OrderDish">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDOrder" Type="int" Nullable="false" />
+          <Property Name="IDDish" Type="int" Nullable="false" />
+          <Property Name="QTY" Type="int" Nullable="false" />
+          <Property Name="TotalPrice" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="RemoveIngridient">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDIngridient" Type="int" Nullable="false" />
+          <Property Name="IDOrderDish" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TitleRole" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_AddIngridient_Ingridient">
+          <End Role="Ingridient" Type="Self.Ingridient" Multiplicity="1" />
+          <End Role="AddIngridient" Type="Self.AddIngridient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingridient">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AddIngridient">
+              <PropertyRef Name="IDIngridient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AddIngridient_OrderDish">
+          <End Role="OrderDish" Type="Self.OrderDish" Multiplicity="1" />
+          <End Role="AddIngridient" Type="Self.AddIngridient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderDish">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AddIngridient">
+              <PropertyRef Name="IDOrderDish" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdditionalPhotos_Dish">
+          <End Role="Dish" Type="Self.Dish" Multiplicity="1" />
+          <End Role="AdditionalPhotos" Type="Self.AdditionalPhotos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dish">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AdditionalPhotos">
+              <PropertyRef Name="IDDish" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ComplimentaryDish_Dish">
+          <End Role="Dish" Type="Self.Dish" Multiplicity="1" />
+          <End Role="ComplimentaryDish" Type="Self.ComplimentaryDish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dish">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ComplimentaryDish">
+              <PropertyRef Name="IDDishParent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ComplimentaryDish_Dish1">
+          <End Role="Dish" Type="Self.Dish" Multiplicity="1" />
+          <End Role="ComplimentaryDish" Type="Self.ComplimentaryDish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dish">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ComplimentaryDish">
+              <PropertyRef Name="IDDishChild" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dish_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Dish" Type="Self.Dish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="IDCategory" />
+            </Principal>
+            <Dependent Role="Dish">
+              <PropertyRef Name="IDCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DishIngridient_Dish">
+          <End Role="Dish" Type="Self.Dish" Multiplicity="1" />
+          <End Role="DishIngridient" Type="Self.DishIngridient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dish">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DishIngridient">
+              <PropertyRef Name="IDDish" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DishIngridient_Ingridient">
+          <End Role="Ingridient" Type="Self.Ingridient" Multiplicity="1" />
+          <End Role="DishIngridient" Type="Self.DishIngridient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingridient">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DishIngridient">
+              <PropertyRef Name="IDIngridient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="IDClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="IDEmpl" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_IDTable">
+          <End Role="IDTable" Type="Self.IDTable" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IDTable">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="IDTable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="IDStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDish_Dish">
+          <End Role="Dish" Type="Self.Dish" Multiplicity="1" />
+          <End Role="OrderDish" Type="Self.OrderDish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dish">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderDish">
+              <PropertyRef Name="IDDish" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDish_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="OrderDish" Type="Self.OrderDish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderDish">
+              <PropertyRef Name="IDOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RemoveIngridient_Ingridient">
+          <End Role="Ingridient" Type="Self.Ingridient" Multiplicity="1" />
+          <End Role="RemoveIngridient" Type="Self.RemoveIngridient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingridient">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RemoveIngridient">
+              <PropertyRef Name="IDIngridient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RemoveIngridient_OrderDish">
+          <End Role="OrderDish" Type="Self.OrderDish" Multiplicity="1" />
+          <End Role="RemoveIngridient" Type="Self.RemoveIngridient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderDish">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RemoveIngridient">
+              <PropertyRef Name="IDOrderDish" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="FUNC_COUNT_MAX_ORDERABLE_DAY_OF_WEEK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date_of_begin" Type="date" Mode="In" />
+          <Parameter Name="date_of_end" Type="date" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="day_of_week" Type="nvarchar" MaxLength="30" />
+                <Property Name="max_orders" Type="int" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="FUNC_COUNT_MOST_ORDERABLE_DAY_OF_WEEK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date_of_begin" Type="date" Mode="In" />
+          <Parameter Name="date_of_end" Type="date" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="day_of_week" Type="nvarchar" MaxLength="30" />
+                <Property Name="total_amount_of_orders_per_year" Type="int" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="FUNC_GET_CATEGORY_STAT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date_of_begin" Type="date" Mode="In" />
+          <Parameter Name="date_of_end" Type="date" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="cat_income" Type="decimal" Precision="38" Scale="2" />
+                <Property Name="most_buyable_dish" Type="nvarchar" MaxLength="100" />
+                <Property Name="most_buyable_dish_income" Type="decimal" Precision="38" Scale="2" />
+                <Property Name="most_incomable_dish" Type="nvarchar" MaxLength="100" />
+                <Property Name="most_incomable_dish_income" Type="decimal" Precision="38" Scale="2" />
+                <Property Name="sum_income_of_cats" Type="decimal" Precision="38" Scale="2" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="FUNC_GET_THEMOST_BUYABLE_DISH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_cat" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+                <Property Name="dish_income" Type="decimal" Precision="38" Scale="2" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="FUNC_GET_THEMOST_INCOMABLE_DISH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_cat" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+                <Property Name="dish_income" Type="decimal" Precision="38" Scale="2" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="PROC_COUNT_ORDE_FULL_PRICE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDOrder" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PROC_COUNT_ORDERDISH_TOTAL_PRICE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDOrderDish" Type="int" Mode="In" />
+          <Parameter Name="QTY" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="Хранилище TortugaKRModelContainer">
+          <EntitySet Name="AddIngridient" EntityType="Self.AddIngridient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdditionalPhotos" EntityType="Self.AdditionalPhotos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComplimentaryDish" EntityType="Self.ComplimentaryDish" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dish" EntityType="Self.Dish" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DishIngridient" EntityType="Self.DishIngridient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IDTable" EntityType="Self.IDTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ingridient" EntityType="Self.Ingridient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDish" EntityType="Self.OrderDish" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RemoveIngridient" EntityType="Self.RemoveIngridient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AddIngridient_Ingridient" Association="Self.FK_AddIngridient_Ingridient">
+            <End Role="Ingridient" EntitySet="Ingridient" />
+            <End Role="AddIngridient" EntitySet="AddIngridient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AddIngridient_OrderDish" Association="Self.FK_AddIngridient_OrderDish">
+            <End Role="OrderDish" EntitySet="OrderDish" />
+            <End Role="AddIngridient" EntitySet="AddIngridient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdditionalPhotos_Dish" Association="Self.FK_AdditionalPhotos_Dish">
+            <End Role="Dish" EntitySet="Dish" />
+            <End Role="AdditionalPhotos" EntitySet="AdditionalPhotos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ComplimentaryDish_Dish" Association="Self.FK_ComplimentaryDish_Dish">
+            <End Role="Dish" EntitySet="Dish" />
+            <End Role="ComplimentaryDish" EntitySet="ComplimentaryDish" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ComplimentaryDish_Dish1" Association="Self.FK_ComplimentaryDish_Dish1">
+            <End Role="Dish" EntitySet="Dish" />
+            <End Role="ComplimentaryDish" EntitySet="ComplimentaryDish" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dish_Category" Association="Self.FK_Dish_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Dish" EntitySet="Dish" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DishIngridient_Dish" Association="Self.FK_DishIngridient_Dish">
+            <End Role="Dish" EntitySet="Dish" />
+            <End Role="DishIngridient" EntitySet="DishIngridient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DishIngridient_Ingridient" Association="Self.FK_DishIngridient_Ingridient">
+            <End Role="Ingridient" EntitySet="Ingridient" />
+            <End Role="DishIngridient" EntitySet="DishIngridient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Role" Association="Self.FK_Employee_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Client" Association="Self.FK_Order_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Employee" Association="Self.FK_Order_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_IDTable" Association="Self.FK_Order_IDTable">
+            <End Role="IDTable" EntitySet="IDTable" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Status" Association="Self.FK_Order_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDish_Dish" Association="Self.FK_OrderDish_Dish">
+            <End Role="Dish" EntitySet="Dish" />
+            <End Role="OrderDish" EntitySet="OrderDish" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDish_Order" Association="Self.FK_OrderDish_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderDish" EntitySet="OrderDish" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RemoveIngridient_Ingridient" Association="Self.FK_RemoveIngridient_Ingridient">
+            <End Role="Ingridient" EntitySet="Ingridient" />
+            <End Role="RemoveIngridient" EntitySet="RemoveIngridient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RemoveIngridient_OrderDish" Association="Self.FK_RemoveIngridient_OrderDish">
+            <End Role="OrderDish" EntitySet="OrderDish" />
+            <End Role="RemoveIngridient" EntitySet="RemoveIngridient" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TortugaKRModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <ComplexType Name="FUNC_COUNT_MAX_ORDERABLE_DAY_OF_WEEK_Result">
+          <Property Name="day_of_week" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="max_orders" Type="Int32" />
+        </ComplexType>
+        <ComplexType Name="FUNC_COUNT_MOST_ORDERABLE_DAY_OF_WEEK_Result">
+          <Property Name="day_of_week" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="total_amount_of_orders_per_year" Type="Int32" />
+        </ComplexType>
+        <ComplexType Name="FUNC_GET_CATEGORY_STAT_Result">
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cat_income" Type="Decimal" Precision="38" Scale="2" />
+          <Property Name="most_buyable_dish" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="most_buyable_dish_income" Type="Decimal" Precision="38" Scale="2" />
+          <Property Name="most_incomable_dish" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="most_incomable_dish_income" Type="Decimal" Precision="38" Scale="2" />
+          <Property Name="sum_income_of_cats" Type="Decimal" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="FUNC_GET_THEMOST_BUYABLE_DISH_Result">
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dish_income" Type="Decimal" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="FUNC_GET_THEMOST_INCOMABLE_DISH_Result">
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dish_income" Type="Decimal" Precision="38" Scale="2" />
+        </ComplexType>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="FUNC_COUNT_MAX_ORDERABLE_DAY_OF_WEEK" IsComposable="true" ReturnType="Collection(TortugaKRModel.FUNC_COUNT_MAX_ORDERABLE_DAY_OF_WEEK_Result)">
+            <Parameter Name="date_of_begin" Mode="In" Type="DateTime" />
+            <Parameter Name="date_of_end" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="FUNC_COUNT_MOST_ORDERABLE_DAY_OF_WEEK" IsComposable="true" ReturnType="Collection(TortugaKRModel.FUNC_COUNT_MOST_ORDERABLE_DAY_OF_WEEK_Result)">
+            <Parameter Name="date_of_begin" Mode="In" Type="DateTime" />
+            <Parameter Name="date_of_end" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="FUNC_GET_CATEGORY_STAT" IsComposable="true" ReturnType="Collection(TortugaKRModel.FUNC_GET_CATEGORY_STAT_Result)">
+            <Parameter Name="date_of_begin" Mode="In" Type="DateTime" />
+            <Parameter Name="date_of_end" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="FUNC_GET_THEMOST_BUYABLE_DISH" IsComposable="true" ReturnType="Collection(TortugaKRModel.FUNC_GET_THEMOST_BUYABLE_DISH_Result)">
+          <Parameter Name="id_cat" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="FUNC_GET_THEMOST_INCOMABLE_DISH" IsComposable="true" ReturnType="Collection(TortugaKRModel.FUNC_GET_THEMOST_INCOMABLE_DISH_Result)">
+          <Parameter Name="id_cat" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PROC_COUNT_ORDE_FULL_PRICE">
+          <Parameter Name="IDOrder" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PROC_COUNT_ORDERDISH_TOTAL_PRICE">
+            <Parameter Name="IDOrderDish" Mode="In" Type="Int32" />
+            <Parameter Name="QTY" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(TortugaKRModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(TortugaKRModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="AddIngridient" EntityType="TortugaKRModel.AddIngridient" />
+          <EntitySet Name="AdditionalPhotos" EntityType="TortugaKRModel.AdditionalPhotos" />
+          <EntitySet Name="Category" EntityType="TortugaKRModel.Category" />
+          <EntitySet Name="Client" EntityType="TortugaKRModel.Client" />
+          <EntitySet Name="ComplimentaryDish" EntityType="TortugaKRModel.ComplimentaryDish" />
+          <EntitySet Name="Dish" EntityType="TortugaKRModel.Dish" />
+          <EntitySet Name="DishIngridient" EntityType="TortugaKRModel.DishIngridient" />
+          <EntitySet Name="Employee" EntityType="TortugaKRModel.Employee" />
+          <EntitySet Name="IDTable" EntityType="TortugaKRModel.IDTable" />
+          <EntitySet Name="Ingridient" EntityType="TortugaKRModel.Ingridient" />
+          <EntitySet Name="Order" EntityType="TortugaKRModel.Order" />
+          <EntitySet Name="OrderDish" EntityType="TortugaKRModel.OrderDish" />
+          <EntitySet Name="RemoveIngridient" EntityType="TortugaKRModel.RemoveIngridient" />
+          <EntitySet Name="Role" EntityType="TortugaKRModel.Role" />
+          <EntitySet Name="Status" EntityType="TortugaKRModel.Status" />
+          <EntitySet Name="sysdiagrams" EntityType="TortugaKRModel.sysdiagrams" />
+          <AssociationSet Name="FK_AddIngridient_Ingridient" Association="TortugaKRModel.FK_AddIngridient_Ingridient">
+            <End Role="Ingridient" EntitySet="Ingridient" />
+            <End Role="AddIngridient" EntitySet="AddIngridient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AddIngridient_OrderDish" Association="TortugaKRModel.FK_AddIngridient_OrderDish">
+            <End Role="OrderDish" EntitySet="OrderDish" />
+            <End Role="AddIngridient" EntitySet="AddIngridient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdditionalPhotos_Dish" Association="TortugaKRModel.FK_AdditionalPhotos_Dish">
+            <End Role="Dish" EntitySet="Dish" />
+            <End Role="AdditionalPhotos" EntitySet="AdditionalPhotos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dish_Category" Association="TortugaKRModel.FK_Dish_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Dish" EntitySet="Dish" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Client" Association="TortugaKRModel.FK_Order_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ComplimentaryDish_Dish" Association="TortugaKRModel.FK_ComplimentaryDish_Dish">
+            <End Role="Dish" EntitySet="Dish" />
+            <End Role="ComplimentaryDish" EntitySet="ComplimentaryDish" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ComplimentaryDish_Dish1" Association="TortugaKRModel.FK_ComplimentaryDish_Dish1">
+            <End Role="Dish" EntitySet="Dish" />
+            <End Role="ComplimentaryDish" EntitySet="ComplimentaryDish" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DishIngridient_Dish" Association="TortugaKRModel.FK_DishIngridient_Dish">
+            <End Role="Dish" EntitySet="Dish" />
+            <End Role="DishIngridient" EntitySet="DishIngridient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDish_Dish" Association="TortugaKRModel.FK_OrderDish_Dish">
+            <End Role="Dish" EntitySet="Dish" />
+            <End Role="OrderDish" EntitySet="OrderDish" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DishIngridient_Ingridient" Association="TortugaKRModel.FK_DishIngridient_Ingridient">
+            <End Role="Ingridient" EntitySet="Ingridient" />
+            <End Role="DishIngridient" EntitySet="DishIngridient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Role" Association="TortugaKRModel.FK_Employee_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Employee" Association="TortugaKRModel.FK_Order_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_IDTable" Association="TortugaKRModel.FK_Order_IDTable">
+            <End Role="IDTable" EntitySet="IDTable" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RemoveIngridient_Ingridient" Association="TortugaKRModel.FK_RemoveIngridient_Ingridient">
+            <End Role="Ingridient" EntitySet="Ingridient" />
+            <End Role="RemoveIngridient" EntitySet="RemoveIngridient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Status" Association="TortugaKRModel.FK_Order_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDish_Order" Association="TortugaKRModel.FK_OrderDish_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderDish" EntitySet="OrderDish" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RemoveIngridient_OrderDish" Association="TortugaKRModel.FK_RemoveIngridient_OrderDish">
+            <End Role="OrderDish" EntitySet="OrderDish" />
+            <End Role="RemoveIngridient" EntitySet="RemoveIngridient" />
+          </AssociationSet>
+          </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="AddIngridient">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDIngridient" Type="Int32" Nullable="false" />
+          <Property Name="IDOrderDish" Type="Int32" Nullable="false" />
+          <Property Name="QTY" Type="Int32" />
+          <NavigationProperty Name="Ingridient" Relationship="TortugaKRModel.FK_AddIngridient_Ingridient" FromRole="AddIngridient" ToRole="Ingridient" />
+          <NavigationProperty Name="OrderDish" Relationship="TortugaKRModel.FK_AddIngridient_OrderDish" FromRole="AddIngridient" ToRole="OrderDish" />
+        </EntityType>
+        <EntityType Name="AdditionalPhotos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDDish" Type="Int32" Nullable="false" />
+          <Property Name="Photo" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Dish" Relationship="TortugaKRModel.FK_AdditionalPhotos_Dish" FromRole="AdditionalPhotos" ToRole="Dish" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="IDCategory" />
+          </Key>
+          <Property Name="IDCategory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Dish" Relationship="TortugaKRModel.FK_Dish_Category" FromRole="Category" ToRole="Dish" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SecondName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="BuyingSum" Type="Int32" Nullable="false" />
+          <Property Name="BirthDay" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Order" Relationship="TortugaKRModel.FK_Order_Client" FromRole="Client" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="ComplimentaryDish">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDDishParent" Type="Int32" Nullable="false" />
+          <Property Name="IDDishChild" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Dish" Relationship="TortugaKRModel.FK_ComplimentaryDish_Dish" FromRole="ComplimentaryDish" ToRole="Dish" />
+          <NavigationProperty Name="Dish1" Relationship="TortugaKRModel.FK_ComplimentaryDish_Dish1" FromRole="ComplimentaryDish" ToRole="Dish" />
+        </EntityType>
+        <EntityType Name="Dish">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Cost" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PhotoPath" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="IDCategory" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="VolumeInMililitres" Type="Int32" />
+          <Property Name="WeightinGrammes" Type="Int32" />
+          <Property Name="Fat" Type="Int32" Nullable="false" />
+          <Property Name="Protein" Type="Int32" Nullable="false" />
+          <Property Name="Carbohydrate" Type="Int32" Nullable="false" />
+          <Property Name="Kkal" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AdditionalPhotos" Relationship="TortugaKRModel.FK_AdditionalPhotos_Dish" FromRole="Dish" ToRole="AdditionalPhotos" />
+          <NavigationProperty Name="Category" Relationship="TortugaKRModel.FK_Dish_Category" FromRole="Dish" ToRole="Category" />
+          <NavigationProperty Name="ComplimentaryDish" Relationship="TortugaKRModel.FK_ComplimentaryDish_Dish" FromRole="Dish" ToRole="ComplimentaryDish" />
+          <NavigationProperty Name="ComplimentaryDish1" Relationship="TortugaKRModel.FK_ComplimentaryDish_Dish1" FromRole="Dish" ToRole="ComplimentaryDish" />
+          <NavigationProperty Name="DishIngridient" Relationship="TortugaKRModel.FK_DishIngridient_Dish" FromRole="Dish" ToRole="DishIngridient" />
+          <NavigationProperty Name="OrderDish" Relationship="TortugaKRModel.FK_OrderDish_Dish" FromRole="Dish" ToRole="OrderDish" />
+        </EntityType>
+        <EntityType Name="DishIngridient">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDIngridient" Type="Int32" Nullable="false" />
+          <Property Name="IDDish" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Dish" Relationship="TortugaKRModel.FK_DishIngridient_Dish" FromRole="DishIngridient" ToRole="Dish" />
+          <NavigationProperty Name="Ingridient" Relationship="TortugaKRModel.FK_DishIngridient_Ingridient" FromRole="DishIngridient" ToRole="Ingridient" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdRole" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="TortugaKRModel.FK_Employee_Role" FromRole="Employee" ToRole="Role" />
+          <NavigationProperty Name="Order" Relationship="TortugaKRModel.FK_Order_Employee" FromRole="Employee" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="IDTable">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TableNumber" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="IsAvalible" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="TortugaKRModel.FK_Order_IDTable" FromRole="IDTable" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Ingridient">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Cost" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="Piсture" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CanBeAdded" Type="Boolean" Nullable="false" />
+          <Property Name="CanBeRemoved" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AddIngridient" Relationship="TortugaKRModel.FK_AddIngridient_Ingridient" FromRole="Ingridient" ToRole="AddIngridient" />
+          <NavigationProperty Name="DishIngridient" Relationship="TortugaKRModel.FK_DishIngridient_Ingridient" FromRole="Ingridient" ToRole="DishIngridient" />
+          <NavigationProperty Name="RemoveIngridient" Relationship="TortugaKRModel.FK_RemoveIngridient_Ingridient" FromRole="Ingridient" ToRole="RemoveIngridient" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDEmpl" Type="Int32" Nullable="false" />
+          <Property Name="IDTable" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="IDClient" Type="Int32" />
+          <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IDStatus" Type="Int32" />
+          <Property Name="FullPrice" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="Client" Relationship="TortugaKRModel.FK_Order_Client" FromRole="Order" ToRole="Client" />
+          <NavigationProperty Name="Employee" Relationship="TortugaKRModel.FK_Order_Employee" FromRole="Order" ToRole="Employee" />
+          <NavigationProperty Name="IDTable1" Relationship="TortugaKRModel.FK_Order_IDTable" FromRole="Order" ToRole="IDTable" />
+          <NavigationProperty Name="Status" Relationship="TortugaKRModel.FK_Order_Status" FromRole="Order" ToRole="Status" />
+          <NavigationProperty Name="OrderDish" Relationship="TortugaKRModel.FK_OrderDish_Order" FromRole="Order" ToRole="OrderDish" />
+        </EntityType>
+        <EntityType Name="OrderDish">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDOrder" Type="Int32" Nullable="false" />
+          <Property Name="IDDish" Type="Int32" Nullable="false" />
+          <Property Name="QTY" Type="Int32" Nullable="false" />
+          <Property Name="TotalPrice" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="AddIngridient" Relationship="TortugaKRModel.FK_AddIngridient_OrderDish" FromRole="OrderDish" ToRole="AddIngridient" />
+          <NavigationProperty Name="Dish" Relationship="TortugaKRModel.FK_OrderDish_Dish" FromRole="OrderDish" ToRole="Dish" />
+          <NavigationProperty Name="Order" Relationship="TortugaKRModel.FK_OrderDish_Order" FromRole="OrderDish" ToRole="Order" />
+          <NavigationProperty Name="RemoveIngridient" Relationship="TortugaKRModel.FK_RemoveIngridient_OrderDish" FromRole="OrderDish" ToRole="RemoveIngridient" />
+        </EntityType>
+        <EntityType Name="RemoveIngridient">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDIngridient" Type="Int32" Nullable="false" />
+          <Property Name="IDOrderDish" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ingridient" Relationship="TortugaKRModel.FK_RemoveIngridient_Ingridient" FromRole="RemoveIngridient" ToRole="Ingridient" />
+          <NavigationProperty Name="OrderDish" Relationship="TortugaKRModel.FK_RemoveIngridient_OrderDish" FromRole="RemoveIngridient" ToRole="OrderDish" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TitleRole" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employee" Relationship="TortugaKRModel.FK_Employee_Role" FromRole="Role" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Order" Relationship="TortugaKRModel.FK_Order_Status" FromRole="Status" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_AddIngridient_Ingridient">
+          <End Type="TortugaKRModel.Ingridient" Role="Ingridient" Multiplicity="1" />
+          <End Type="TortugaKRModel.AddIngridient" Role="AddIngridient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingridient">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AddIngridient">
+              <PropertyRef Name="IDIngridient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AddIngridient_OrderDish">
+          <End Type="TortugaKRModel.OrderDish" Role="OrderDish" Multiplicity="1" />
+          <End Type="TortugaKRModel.AddIngridient" Role="AddIngridient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderDish">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AddIngridient">
+              <PropertyRef Name="IDOrderDish" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdditionalPhotos_Dish">
+          <End Type="TortugaKRModel.Dish" Role="Dish" Multiplicity="1" />
+          <End Type="TortugaKRModel.AdditionalPhotos" Role="AdditionalPhotos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dish">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AdditionalPhotos">
+              <PropertyRef Name="IDDish" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dish_Category">
+          <End Type="TortugaKRModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="TortugaKRModel.Dish" Role="Dish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="IDCategory" />
+            </Principal>
+            <Dependent Role="Dish">
+              <PropertyRef Name="IDCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Client">
+          <End Type="TortugaKRModel.Client" Role="Client" Multiplicity="0..1" />
+          <End Type="TortugaKRModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="IDClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ComplimentaryDish_Dish">
+          <End Type="TortugaKRModel.Dish" Role="Dish" Multiplicity="1" />
+          <End Type="TortugaKRModel.ComplimentaryDish" Role="ComplimentaryDish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dish">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ComplimentaryDish">
+              <PropertyRef Name="IDDishParent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ComplimentaryDish_Dish1">
+          <End Type="TortugaKRModel.Dish" Role="Dish" Multiplicity="1" />
+          <End Type="TortugaKRModel.ComplimentaryDish" Role="ComplimentaryDish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dish">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ComplimentaryDish">
+              <PropertyRef Name="IDDishChild" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DishIngridient_Dish">
+          <End Type="TortugaKRModel.Dish" Role="Dish" Multiplicity="1" />
+          <End Type="TortugaKRModel.DishIngridient" Role="DishIngridient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dish">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DishIngridient">
+              <PropertyRef Name="IDDish" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDish_Dish">
+          <End Type="TortugaKRModel.Dish" Role="Dish" Multiplicity="1" />
+          <End Type="TortugaKRModel.OrderDish" Role="OrderDish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dish">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderDish">
+              <PropertyRef Name="IDDish" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DishIngridient_Ingridient">
+          <End Type="TortugaKRModel.Ingridient" Role="Ingridient" Multiplicity="1" />
+          <End Type="TortugaKRModel.DishIngridient" Role="DishIngridient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingridient">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DishIngridient">
+              <PropertyRef Name="IDIngridient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Role">
+          <End Type="TortugaKRModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="TortugaKRModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Employee">
+          <End Type="TortugaKRModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="TortugaKRModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="IDEmpl" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_IDTable">
+          <End Type="TortugaKRModel.IDTable" Role="IDTable" Multiplicity="1" />
+          <End Type="TortugaKRModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IDTable">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="IDTable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RemoveIngridient_Ingridient">
+          <End Type="TortugaKRModel.Ingridient" Role="Ingridient" Multiplicity="1" />
+          <End Type="TortugaKRModel.RemoveIngridient" Role="RemoveIngridient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingridient">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RemoveIngridient">
+              <PropertyRef Name="IDIngridient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Status">
+          <End Type="TortugaKRModel.Status" Role="Status" Multiplicity="0..1" />
+          <End Type="TortugaKRModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="IDStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDish_Order">
+          <End Type="TortugaKRModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="TortugaKRModel.OrderDish" Role="OrderDish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderDish">
+              <PropertyRef Name="IDOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RemoveIngridient_OrderDish">
+          <End Type="TortugaKRModel.OrderDish" Role="OrderDish" Multiplicity="1" />
+          <End Type="TortugaKRModel.RemoveIngridient" Role="RemoveIngridient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderDish">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RemoveIngridient">
+              <PropertyRef Name="IDOrderDish" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище TortugaKRModelContainer" CdmEntityContainer="Entities">
+          <FunctionImportMapping FunctionName="Хранилище TortugaKRModel.FUNC_COUNT_MAX_ORDERABLE_DAY_OF_WEEK" FunctionImportName="FUNC_COUNT_MAX_ORDERABLE_DAY_OF_WEEK">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TortugaKRModel.FUNC_COUNT_MAX_ORDERABLE_DAY_OF_WEEK_Result">
+                <ScalarProperty Name="day_of_week" ColumnName="day_of_week" />
+                <ScalarProperty Name="max_orders" ColumnName="max_orders" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="Хранилище TortugaKRModel.FUNC_COUNT_MOST_ORDERABLE_DAY_OF_WEEK" FunctionImportName="FUNC_COUNT_MOST_ORDERABLE_DAY_OF_WEEK">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TortugaKRModel.FUNC_COUNT_MOST_ORDERABLE_DAY_OF_WEEK_Result">
+                <ScalarProperty Name="day_of_week" ColumnName="day_of_week" />
+                <ScalarProperty Name="total_amount_of_orders_per_year" ColumnName="total_amount_of_orders_per_year" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="Хранилище TortugaKRModel.FUNC_GET_CATEGORY_STAT" FunctionImportName="FUNC_GET_CATEGORY_STAT">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TortugaKRModel.FUNC_GET_CATEGORY_STAT_Result">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="cat_income" ColumnName="cat_income" />
+                <ScalarProperty Name="most_buyable_dish" ColumnName="most_buyable_dish" />
+                <ScalarProperty Name="most_buyable_dish_income" ColumnName="most_buyable_dish_income" />
+                <ScalarProperty Name="most_incomable_dish" ColumnName="most_incomable_dish" />
+                <ScalarProperty Name="most_incomable_dish_income" ColumnName="most_incomable_dish_income" />
+                <ScalarProperty Name="sum_income_of_cats" ColumnName="sum_income_of_cats" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="Хранилище TortugaKRModel.FUNC_GET_THEMOST_BUYABLE_DISH" FunctionImportName="FUNC_GET_THEMOST_BUYABLE_DISH">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TortugaKRModel.FUNC_GET_THEMOST_BUYABLE_DISH_Result">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="dish_income" ColumnName="dish_income" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="Хранилище TortugaKRModel.FUNC_GET_THEMOST_INCOMABLE_DISH" FunctionImportName="FUNC_GET_THEMOST_INCOMABLE_DISH">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TortugaKRModel.FUNC_GET_THEMOST_INCOMABLE_DISH_Result">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="dish_income" ColumnName="dish_income" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PROC_COUNT_ORDE_FULL_PRICE" FunctionName="Хранилище TortugaKRModel.PROC_COUNT_ORDE_FULL_PRICE" />
+          <FunctionImportMapping FunctionImportName="PROC_COUNT_ORDERDISH_TOTAL_PRICE" FunctionName="Хранилище TortugaKRModel.PROC_COUNT_ORDERDISH_TOTAL_PRICE" />
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище TortugaKRModel.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище TortugaKRModel.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище TortugaKRModel.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище TortugaKRModel.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TortugaKRModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище TortugaKRModel.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TortugaKRModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище TortugaKRModel.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище TortugaKRModel.sp_upgraddiagrams" />
+          <EntitySetMapping Name="AddIngridient">
+            <EntityTypeMapping TypeName="TortugaKRModel.AddIngridient">
+              <MappingFragment StoreEntitySet="AddIngridient">
+                <ScalarProperty Name="QTY" ColumnName="QTY" />
+                <ScalarProperty Name="IDOrderDish" ColumnName="IDOrderDish" />
+                <ScalarProperty Name="IDIngridient" ColumnName="IDIngridient" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdditionalPhotos">
+            <EntityTypeMapping TypeName="TortugaKRModel.AdditionalPhotos">
+              <MappingFragment StoreEntitySet="AdditionalPhotos">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="IDDish" ColumnName="IDDish" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Category">
+            <EntityTypeMapping TypeName="TortugaKRModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="IDCategory" ColumnName="IDCategory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="TortugaKRModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
+                <ScalarProperty Name="BuyingSum" ColumnName="BuyingSum" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="SecondName" ColumnName="SecondName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComplimentaryDish">
+            <EntityTypeMapping TypeName="TortugaKRModel.ComplimentaryDish">
+              <MappingFragment StoreEntitySet="ComplimentaryDish">
+                <ScalarProperty Name="IDDishChild" ColumnName="IDDishChild" />
+                <ScalarProperty Name="IDDishParent" ColumnName="IDDishParent" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dish">
+            <EntityTypeMapping TypeName="TortugaKRModel.Dish">
+              <MappingFragment StoreEntitySet="Dish">
+                <ScalarProperty Name="Kkal" ColumnName="Kkal" />
+                <ScalarProperty Name="Carbohydrate" ColumnName="Carbohydrate" />
+                <ScalarProperty Name="Protein" ColumnName="Protein" />
+                <ScalarProperty Name="Fat" ColumnName="Fat" />
+                <ScalarProperty Name="WeightinGrammes" ColumnName="WeightinGrammes" />
+                <ScalarProperty Name="VolumeInMililitres" ColumnName="VolumeInMililitres" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IDCategory" ColumnName="IDCategory" />
+                <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DishIngridient">
+            <EntityTypeMapping TypeName="TortugaKRModel.DishIngridient">
+              <MappingFragment StoreEntitySet="DishIngridient">
+                <ScalarProperty Name="IDDish" ColumnName="IDDish" />
+                <ScalarProperty Name="IDIngridient" ColumnName="IDIngridient" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="TortugaKRModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="LName" ColumnName="LName" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IDTable">
+            <EntityTypeMapping TypeName="TortugaKRModel.IDTable">
+              <MappingFragment StoreEntitySet="IDTable">
+                <ScalarProperty Name="IsAvalible" ColumnName="IsAvalible" />
+                <ScalarProperty Name="TableNumber" ColumnName="TableNumber" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ingridient">
+            <EntityTypeMapping TypeName="TortugaKRModel.Ingridient">
+              <MappingFragment StoreEntitySet="Ingridient">
+                <ScalarProperty Name="CanBeRemoved" ColumnName="CanBeRemoved" />
+                <ScalarProperty Name="CanBeAdded" ColumnName="CanBeAdded" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Piсture" ColumnName="Piсture" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order">
+            <EntityTypeMapping TypeName="TortugaKRModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="FullPrice" ColumnName="FullPrice" />
+                <ScalarProperty Name="IDStatus" ColumnName="IDStatus" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="IDClient" ColumnName="IDClient" />
+                <ScalarProperty Name="IDTable" ColumnName="IDTable" />
+                <ScalarProperty Name="IDEmpl" ColumnName="IDEmpl" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDish">
+            <EntityTypeMapping TypeName="TortugaKRModel.OrderDish">
+              <MappingFragment StoreEntitySet="OrderDish">
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="QTY" ColumnName="QTY" />
+                <ScalarProperty Name="IDDish" ColumnName="IDDish" />
+                <ScalarProperty Name="IDOrder" ColumnName="IDOrder" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RemoveIngridient">
+            <EntityTypeMapping TypeName="TortugaKRModel.RemoveIngridient">
+              <MappingFragment StoreEntitySet="RemoveIngridient">
+                <ScalarProperty Name="IDOrderDish" ColumnName="IDOrderDish" />
+                <ScalarProperty Name="IDIngridient" ColumnName="IDIngridient" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="TortugaKRModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="TitleRole" ColumnName="TitleRole" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="TortugaKRModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="TortugaKRModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

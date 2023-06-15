@@ -1,0 +1,169 @@
+﻿<Window x:Class="Tuga.Windows.ChoiceTableWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Tuga.Windows"
+        mc:Ignorable="d"
+        Title="ChoiceTableWindow" Height="800" Width="1200" Background="#FFC4FDC4">
+    <Grid>
+        <Border  Panel.ZIndex="1" Grid.ColumnSpan="2" x:Name="PlugBrd" Visibility="Collapsed" Background="#02000000"/>
+        <Button Style="{DynamicResource ButtonStyleTable}" Visibility="Collapsed" BorderBrush="{x:Null}"
+                Name="btnBegin" Background="{x:Null}" Width="600" Height="155" Click="btnBegin_Click">
+            <Image Source="/Photo/начать.png">
+            </Image>
+        </Button>
+        <Border Panel.ZIndex="2" x:Name="JoinNotificationBrd" Visibility="Collapsed" Height="400" Width="900" Margin="0 0 0 150" Background="#FF80F36D" BorderThickness="3" BorderBrush="Black">
+            <WrapPanel Orientation="Vertical">
+                <TextBlock Name="NotificationTb" Text="Столик уже занят, хотите присоединиться?" Margin="80 120 0 0" FontSize="36" FontFamily="Muller Regular"/>
+                <WrapPanel  >
+                    <Button Style="{DynamicResource ButtonRound}" Background="Black"
+                        MinWidth="350"
+                        MinHeight="80" 
+                        
+                        Margin="50 100 0 0" BorderBrush="{x:Null}"
+                    x:Name="btnYesJoin" Foreground="#FF2AEB2A" Click="btnYesJoin_Click">
+                        <TextBlock                     
+                        Text="Да"
+                        FontSize="48" 
+                        FontFamily="Muller Regular"
+                        Foreground="#FF2AEB2A"
+                        Margin="0 0 0 0"
+                >
+                        </TextBlock>
+                    </Button>
+                    <Button Style="{DynamicResource ButtonRound}" Background="Black"
+                        MinWidth="350"
+                        MinHeight="80" 
+                        
+                        Margin="90 100 0 0" BorderBrush="{x:Null}"
+                    x:Name="btnNoJoin" Foreground="#FF2AEB2A" Click="btnNoJoin_Click">
+                        <TextBlock                     
+                        Text="Нет"
+                        FontSize="48" 
+                        FontFamily="Muller Regular"
+                        Foreground="#FF2AEB2A"
+                        Margin="0 0 0 0"
+                >
+                        </TextBlock>
+                    </Button>
+                </WrapPanel>
+            </WrapPanel>
+        </Border>
+        <Grid x:Name="TableGrd" Visibility="Visible">
+             <Grid.RowDefinitions>
+                 <RowDefinition Height="1*"/>
+                 <RowDefinition Height="1*"/>
+                 <RowDefinition Height="1*"/>
+             </Grid.RowDefinitions>
+             <Grid.ColumnDefinitions>
+                 <ColumnDefinition Width="0.8*"/>
+                 <ColumnDefinition Width="1*"/>
+                 <ColumnDefinition Width="1*"/>
+                 <ColumnDefinition Width="1*"/>
+                 <ColumnDefinition Width="0.8*"/>
+             </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="1" Margin="210 60 0 0" Grid.ColumnSpan="3" Text="ВЫБЕРИТЕ СТОЛИК" FontFamily="Muller Regular" FontSize="36"></TextBlock>
+             <Image
+                 Grid.Column="1"
+                 Grid.ColumnSpan="3" 
+                 Source="/Photo/вывеска.png"
+                 VerticalAlignment="Bottom"
+                 Margin="80 0"
+                 >
+             </Image>
+             <Button Style="{DynamicResource ButtonStyleTable}" BorderBrush="{x:Null}"
+                     Margin="70 90 20 0"
+                     Name="btnV1" Background="{x:Null}"
+                     Click="btn_Click">
+                 <Image x:Name="imgbtnV1" Source="/Photo/Стол ВИП1.png">
+                 </Image>
+             </Button>
+             <Button Style="{DynamicResource ButtonStyleTable}" BorderBrush="{x:Null}"
+                     Margin="20 90 70 0"
+                     Grid.Column="4" Name="btnV2" Background="{x:Null}" Click="btn_Click">
+                 <Image x:Name="imgbtnV2" Source="/Photo/Стол ВИП 2.png">
+                 </Image>
+             </Button>
+             <Button Style="{DynamicResource ButtonStyleTable}" BorderBrush="{x:Null}"
+                     Margin="100 70 0 20"
+                     Grid.Row="1" Name="btn1" Background="{x:Null}"
+                     Click="btn_Click">
+                 <Image x:Name="imgbtn1" Source="/Photo/Стол 1.png">
+                 </Image>
+             </Button>
+             <Button Style="{DynamicResource ButtonStyleTable}" Background="{x:Null}" BorderBrush="{x:Null}"
+                     Margin="100 70 30 20"
+                     Grid.Row="1"
+                     Grid.Column="1" Name="btn2"
+                     Click="btn_Click">
+                 <Image x:Name="imgbtn2" Source="/Photo/Стол 2.png">
+                 </Image>
+             </Button>
+             <Button Style="{DynamicResource ButtonStyleTable}" Background="{x:Null}" BorderBrush="{x:Null}"
+                     Margin="70 70 60 20"
+                     Grid.Row="1"
+                     Grid.Column="2" Name="btn3"
+                     Click="btn_Click">
+                 <Image x:Name="imgbtn3" Source="/Photo/Стол 3.png" >
+                 </Image>
+             </Button>
+             <Button Style="{DynamicResource ButtonStyleTable}" Background="{x:Null}" BorderBrush="{x:Null}"
+                     Margin="40 70 90 20"
+                     Grid.Row="1"
+                     Grid.Column="3" Name="btn4"
+                     Click="btn_Click">
+                 <Image x:Name="imgbtn4" Source="/Photo/Стол 4.png">
+                 </Image>
+             </Button>
+             <Button Style="{DynamicResource ButtonStyleTable}" Background="{x:Null}" BorderBrush="{x:Null}"
+                     Margin="0 70 100 20"
+                     Grid.Row="1"
+                     Grid.Column="4" Name="btn5"
+                     Click="btn_Click">
+                 <Image x:Name="imgbtn5" Source="/Photo/Стол 5.png">
+                 </Image>
+             </Button>
+             <Button Style="{DynamicResource ButtonStyleTable}" Background="{x:Null}" BorderBrush="{x:Null}"
+                     Margin="100 50 0 40"
+                     Grid.Row="2" Name="btn6"
+                     Click="btn_Click">
+                 <Image x:Name="imgbtn6" Source="/Photo/Стол 6.png">
+                 </Image>
+             </Button>
+             <Button Style="{DynamicResource ButtonStyleTable}" Background="{x:Null}" BorderBrush="{x:Null}"
+                     Margin="100 50 30 40"
+                     Grid.Row="2"
+                     Grid.Column="1" Name="btn7"
+                     Click="btn_Click">
+                 <Image x:Name="imgbtn7" Source="/Photo/Стол 7.png">
+                 </Image>
+             </Button>
+             <Button Style="{DynamicResource ButtonStyleTable}" Background="{x:Null}" BorderBrush="{x:Null}"
+                     Margin="70 50 60 40"
+                     Grid.Row="2"
+                     Grid.Column="2" Name="btn8"
+                     Click="btn_Click">
+                 <Image x:Name="imgbtn8" Source="/Photo/Стол 8.png">
+                 </Image>
+             </Button>
+             <Button Style="{DynamicResource ButtonStyleTable}" Background="{x:Null}" BorderBrush="{x:Null}"
+                     Margin="40 50 90 40"
+                     Grid.Row="2"
+                     Grid.Column="3" Name="btn9"
+                     Click="btn_Click">
+                 <Image x:Name="imgbtn9" Source="/Photo/Стол 9.png">
+                 </Image>
+             </Button>
+             <Button Style="{DynamicResource ButtonStyleTable}" Background="{x:Null}" BorderBrush="{x:Null}"
+                     Margin="0 50 100 40"
+                     Grid.Row="2"
+                     Grid.Column="4" Name="btn10"
+                     Click="btn_Click">
+                 <Image x:Name="imgbtn10" Source="/Photo/Стол 10.png">
+                 </Image>
+             </Button>
+
+         </Grid>
+    </Grid>
+</Window>

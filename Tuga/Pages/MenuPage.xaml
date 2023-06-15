@@ -1,0 +1,177 @@
+﻿<Page x:Class="Tuga.Pages.MenuPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Tuga.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="520" d:DesignWidth="1200"
+      Title="MenuPage">
+
+    <Grid Background="#FFC4FDC4">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.4*"/>
+            <ColumnDefinition Width="0.6*"/>
+        </Grid.ColumnDefinitions>
+        <Border BorderThickness="0 0 1 0" BorderBrush="Black">
+            <StackPanel>
+                <Button x:Name="btnBar" Style="{DynamicResource btnsMenuStyle}" BorderBrush="{x:Null}" Background="{x:Null}" HorizontalAlignment="Left" Click="btnBar_Click">
+                    <Grid Margin="100 30 0 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.3*"/>
+                            <ColumnDefinition Width="0.7*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="/Photo/иконка напитки.png"
+                               MaxHeight="65"
+                               MaxWidth="65">
+                        </Image>
+                        <TextBlock
+                            x:Name="tbBar"
+                            Text="Бар"
+                            FontSize="32" 
+                            FontFamily="Muller Regular"
+                            Margin="20 0 0 0"
+                            VerticalAlignment="Center"
+                            Grid.Column="1" FontWeight="Normal" TextDecorations="{x:Null}"
+                            >
+                        </TextBlock>
+                    </Grid>
+                </Button>
+                <Button x:Name="btnHotDishes" Style="{DynamicResource btnsMenuStyle}" BorderBrush="{x:Null}" Background="{x:Null}" HorizontalAlignment="Left" Click="btnHotDishes_Click">
+                    <Grid Margin="100 30 0 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.3*"/>
+                            <ColumnDefinition Width="0.7*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="/Photo/иконка горячее.png"
+                               MaxHeight="65"
+                               MaxWidth="65">
+                        </Image>
+                        <TextBlock
+                            x:Name="tbHotDishes"
+                            Text="Горячие блюда"
+                            FontSize="32" 
+                            FontFamily="Muller Regular"
+                            Margin="20 0 0 0"
+                            VerticalAlignment="Center"
+                            Grid.Column="1"
+                            >
+                        </TextBlock>
+                    </Grid>
+                </Button>
+                <Button x:Name="btnDesserts" Style="{DynamicResource btnsMenuStyle}" BorderBrush="{x:Null}" Background="{x:Null}" HorizontalAlignment="Left" Click="btnDesserts_Click">
+                    <Grid Margin="100 30 0 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.3*"/>
+                            <ColumnDefinition Width="0.7*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="/Photo/иконка десерты.png"
+                               MaxHeight="65"
+                               MaxWidth="65">
+                        </Image>
+                        <TextBlock
+                            x:Name="tbDesserts"
+                            Text="Десерты"
+                            FontSize="32" 
+                            FontFamily="Muller Regular"
+                            Margin="20 0 0 0"
+                            VerticalAlignment="Center"
+                            Grid.Column="1"
+                            >
+                        </TextBlock>
+                    </Grid>
+                </Button>
+                <Button x:Name="btnSalads" Style="{DynamicResource btnsMenuStyle}" BorderBrush="{x:Null}" Background="{x:Null}" HorizontalAlignment="Left" Click="btnSalads_Click">
+                    <Grid Margin="100 30 0 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.3*"/>
+                            <ColumnDefinition Width="0.7*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="/Photo/иконка салат.png"
+                               MaxHeight="65"
+                               MaxWidth="65">
+                        </Image>
+                        <TextBlock
+                            x:Name="tbSalads"
+                            Text="Салаты"
+                            FontSize="32" 
+                            FontFamily="Muller Regular"
+                            Margin="20 0 0 0"
+                            VerticalAlignment="Center"
+                            Grid.Column="1" FontStyle="Normal"
+                            >
+                        </TextBlock>
+                    </Grid>
+                </Button>
+                <Button x:Name="btnSnacks" Style="{DynamicResource btnsMenuStyle}" BorderBrush="{x:Null}" Background="{x:Null}" HorizontalAlignment="Left" Click="btnSnacks_Click" FontWeight="Normal">
+                    <Grid Margin="100 30 0 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.3*"/>
+                            <ColumnDefinition Width="0.7*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="/Photo/иконка закуски.png"
+                               MaxHeight="65"
+                               MaxWidth="65">
+                        </Image>
+                        <TextBlock
+                            x:Name="tbSnacks"
+                            Text="Закуски"
+                            FontSize="32" 
+                            FontFamily="Muller Regular"
+                            Margin="20 0 0 0"
+                            VerticalAlignment="Center"
+                            Grid.Column="1"
+                            >
+                        </TextBlock>
+                    </Grid>
+                </Button>
+            </StackPanel>
+        </Border>
+        <ListView Style="{DynamicResource ListViewStyle}"
+            Grid.Column="1" x:Name="lvMenu" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            HorizontalContentAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" MouseDoubleClick="lvMenu_MouseDoubleClick">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.77*"/>
+                            <RowDefinition Height="0.23*"/>
+                        </Grid.RowDefinitions>
+                        <Border
+                    MinHeight="219"
+                    MinWidth="219" Background="#FF73EC73">
+                            <Border Background="White"
+                            Margin="15">
+                                <Image Source="{Binding PhotoPath}"
+                               MaxHeight="125"></Image>
+                            </Border>
+                        </Border>
+                        <StackPanel Grid.Row="1" Margin="10 0 0 0">
+                            <TextBlock
+                            Text="{Binding Title}"
+                            FontSize="20" 
+                            FontFamily="Muller Regular"
+                            VerticalAlignment="Center"
+                            Grid.Row="1" Foreground="Black"
+                            >
+                            </TextBlock>
+                            <TextBlock
+                            Text="{Binding Cost}"
+                            FontSize="16" 
+                            FontFamily="Muller Regular"
+                            VerticalAlignment="Center"
+                             Foreground="Black"
+                            >
+                            </TextBlock>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>
